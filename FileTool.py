@@ -72,6 +72,8 @@ class FileTool:
                             csvwriter = csv.writer(writeFile)
                             csv_file.seek(0)
                             first_row = next(csv_reader)
+                            # If the data does not have a header, it will be automatically titled with
+                            # consecutive numbers as many as the data column.
                             header = [i for i, _ in enumerate(first_row)]
                             self.list_of_column_names = header
                             csvwriter.writerow(header)
@@ -438,5 +440,5 @@ class FileTool:
             self.file_menu()
 
 
-deneme = FileTool("deneme.csv", [0, 1, 2, 3, 4])
+deneme = FileTool("deneme.csv", ["col1", "col2", "col3", "col4", "col5"])
 deneme.file_menu()
